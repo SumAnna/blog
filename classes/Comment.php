@@ -39,11 +39,16 @@ class Comment
       }
       $link = new DbConnect();
       $sql = $link->prepare('INSERT INTO '.self::$tablename.' (id, post_id, author, comment_text, ip, created_at) VALUES (NULL, ?, ?, ?, ?, ?)');
-       $sql->bindParam(1, intval($this->post_id), PDO::PARAM_INT);
-      $sql->bindParam(2, htmlentities($this->author), PDO::PARAM_STR, 64);
-      $sql->bindParam(3, htmlentities($this->comment_text), PDO::PARAM_STR);
-      $sql->bindParam(4, htmlentities($this->ip), PDO::PARAM_STR, 15);
-      $sql->bindParam(5, htmlentities($this->created_at), PDO::PARAM_STR);
+      $this->post_id = intval($this->post_id);
+      $sql->bindParam(1, $this->post_id, PDO::PARAM_INT);
+      $this->author = htmlentities($this->author);
+      $sql->bindParam(2, $this->author, PDO::PARAM_STR, 64);
+      $this->comment_text = htmlentities($this->comment_text);
+      $sql->bindParam(3, $this->comment_text, PDO::PARAM_STR);
+      $this->ip = htmlentities($this->ip);
+      $sql->bindParam(4, $this->ip, PDO::PARAM_STR, 15);
+      $this->created_at = htmlentities($this->created_at);
+      $sql->bindParam(5, $this->created_at, PDO::PARAM_STR);
       return $sql->execute();
     }
     

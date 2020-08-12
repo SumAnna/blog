@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function(){
         request.open('POST', 'form_submit.php');
         var data = new FormData(form);
         request.send(data);
-        
         request.onload = function(){
            form.reset(); 
            var response = JSON.parse(this.responseText);
@@ -15,7 +14,11 @@ document.addEventListener('DOMContentLoaded', function(){
            var theFirstChild = parent.firstChild;
            var theLastChild = document.getElementsByClassName('hidden-comment')[0];
            var newComment = theLastChild.cloneNode(true);
-           parent.prepend(newComment, theFirstChild);
+           if (theFirstChild){
+              parent.prepend(newComment, theFirstChild); 
+           } else{
+               parent.appendChild(newComment);
+           }
            newComment.setAttribute("class", "comments-container");
            newComment.querySelector(".comment-author").innerHTML = data.get('author');
            newComment.querySelector(".comment-ip").innerHTML = 'IP: '+response.ip;
