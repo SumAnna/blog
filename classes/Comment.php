@@ -47,11 +47,17 @@ class Comment
       return $sql->execute();
     }
     
-    public function set($param, $value){
+    public function __set($param, $value){
       if(empty($param) || empty($value)) {
         return false;
       }
       $this->$param = $value;
       return true;
+    }
+    public function __get($attr){
+      if(empty($attr)) {
+        return false;
+      }
+      return  $this->$attr;
     }
 }

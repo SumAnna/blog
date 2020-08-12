@@ -6,7 +6,7 @@ require_once 'classes/Post.php';
 $page = isset($_GET["page"]) ?  $_GET["page"] : 1;
 //$postsperpage = Post::getDom($page);
 
-if($page < 1 || $page > Post::getPagesCount()) {
+if ($page < 1 || $page > Post::getPagesCount()) {
     header('Location: /errors/404.html');
     exit;
 }
@@ -15,7 +15,7 @@ $posts = Post::getDOM($page);
 $pages = Post::getPagesCount();
 $xslt = new XSLTProcessor();
 $doc = new DOMDocument();
-$doc->load('posts.xsl');
+$doc->load('templates/posts.xsl');
 
 $xslt->importStyleSheet($doc);
 

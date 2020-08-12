@@ -5,15 +5,15 @@ if (isset($_POST['author']) && isset($_POST['comment']) && isset($_POST['post_id
   $comment_text = htmlentities($_POST['comment']);
   $post_id = intval($_POST['post_id']);
   $comment = new Comment();
-  $comment->set('author', $author);
-  $comment->set('comment_text', $comment_text);
-  $comment->set('post_id', $post_id);
-  $comment->set('ip', $_SERVER['REMOTE_ADDR']);
+  $comment->__set('author', $author);
+  $comment->__set('comment_text', $comment_text);
+  $comment->__set('post_id', $post_id);
+  $comment->__set('ip', $_SERVER['REMOTE_ADDR']);
   $result = $comment->save();
   if ($result) {
-    echo 'Комментарий добавлен!';
+    echo '{"message": "Комментарий добавлен", "ip": "'.$ip = $comment->__get('ip').'", "created_at": "'.$ip = $comment->__get('created_at').'"}';
   } else {
-    echo 'Комментарий не был добавлен!';
+    echo '{"message": "Комментарий добавлен"}';
   }
 }
 
