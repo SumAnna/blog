@@ -1,5 +1,5 @@
 <?php
-require_once('DbConnect.php');
+require_once(__DIR__.'/DbConnect.php');
 //Класс комментариев
 //Читает записи комментариев
 class Comment
@@ -17,7 +17,7 @@ class Comment
         if ($id) {
             $link = new DbConnect();
             $sql = $link->prepare('SELECT id, post_id, author, comment_text, ip, created_at FROM ? WHERE id=?');
-            $sql->execute([self::$tablename, $id]);
+            $sql->execute([self::$tablename, intval($id)]);
             $result = $sql->fetch(PDO::FETCH_ASSOC);
             $this->id = $result['id'];
             $this->author = $result['author'];
@@ -39,11 +39,11 @@ class Comment
       }
       $link = new DbConnect();
       $sql = $link->prepare('INSERT INTO '.self::$tablename.' (id, post_id, author, comment_text, ip, created_at) VALUES (NULL, ?, ?, ?, ?, ?)');
-      $sql->bindParam(1, $this->post_id, PDO::PARAM_INT);
-      $sql->bindParam(2, $this->author, PDO::PARAM_STR, 64);
-      $sql->bindParam(3, $this->comment_text, PDO::PARAM_STR);
-      $sql->bindParam(4, $this->ip, PDO::PARAM_STR, 15);
-      $sql->bindParam(5, $this->created_at, PDO::PARAM_STR);
+       $sql->bindParam(1, intval($this->post_id), PDO::PARAM_INT);
+      $sql->bindParam(2, htmlentities($this->author), PDO::PARAM_STR, 64);
+      $sql->bindParam(3, htmlentities($this->comment_text), PDO::PARAM_STR);
+      $sql->bindParam(4, htmlentities($this->ip), PDO::PARAM_STR, 15);
+      $sql->bindParam(5, htmlentities($this->created_at), PDO::PARAM_STR);
       return $sql->execute();
     }
     

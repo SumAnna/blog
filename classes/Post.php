@@ -1,5 +1,5 @@
 <?php
-require_once('DbConnect.php');
+require_once(__DIR__.'/DbConnect.php');
 //Класс постов
 //Читает записи постов
 class Post
@@ -19,7 +19,7 @@ class Post
         if ($id) {
             $link = new DbConnect();
             $sql = $link->prepare('SELECT id, title, content, created_at FROM '.self::$tablename.' WHERE id=?');
-            $sql->execute([$id]);
+            $sql->execute([intval($id)]);
             $result = $sql->fetch(PDO::FETCH_ASSOC);
             if ($result) {
               $this->id = $result['id'];

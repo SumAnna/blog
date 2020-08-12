@@ -43,18 +43,20 @@
                     </xsl:for-each>
                 </div>
                 <div class="comments-container hidden hidden-comment">
-                        <div class="comment-main-level">
-                            <div class="comment-avatar"><img src="https://pbs.twimg.com/media/D8tCa48VsAA4lxn.jpg:large" alt="comment-{@id}-img"/></div>
-                            <div class="comment-box">
-                                <div class="comment-head">
-                                        <h6 class="comment-author"></h6>
-                                        <p class="comment-date"></p>
-                                        <p class="comment-ip"></p>
-                                </div>
-                                <div class="comment-content"></div>
+                    <div class="comment-main-level">
+                        <div class="comment-avatar">
+                            <img src="../images/comment.jpg" alt="comment-{@id}-img"/>
+                        </div>
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                    <h6 class="comment-author"></h6>
+                                    <p class="comment-date"></p>
+                                    <p class="comment-ip"></p>
                             </div>
-                        </div> 
+                            <div class="comment-content"></div>
+                        </div>
                     </div>
+                </div>
                 <div id="comments-form" class="comments-form">
                     <h2 class="comment-leave">Добавить комментарий</h2>     
                     <form method="POST" id="form-comment">
