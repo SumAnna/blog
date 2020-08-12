@@ -27,7 +27,7 @@
                     <xsl:for-each select="comment">              
                         <div class="comments-container">
                             <div class="comment-main-level">
-                                <div class="comment-avatar"><img src="https://pbs.twimg.com/media/D8tCa48VsAA4lxn.jpg:large" alt="comment-img"/></div>
+                                <div class="comment-avatar"><img src="../images/comment.jpg" alt="comment-img"/></div>
                                     <div class="comment-box">
                                         <div class="comment-head">
                                                 <h6 class="comment-author"><xsl:value-of select="@author" /></h6>
