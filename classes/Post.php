@@ -16,7 +16,7 @@ class Post
     public function __construct($id = null)
     {
       $result = false;
-        if ($id) {
+        if (intval($id)) {
             $link = new DbConnect();
             $sql = $link->prepare('SELECT id, title, content, created_at FROM '.self::$tablename.' WHERE id=?');
             $sql->execute([intval($id)]);
@@ -28,12 +28,11 @@ class Post
               $this->created_at = $result['created_at'];
               $result = $this;
               $this->comments = $this->getComments($id);
-            }
-        }
-        else {
-            $this->created_at = date('Y-m-d H:i:s');
+            } else {
+            
         }
         return $result;
+    }
     }
     
     public static function getPosts($page){
@@ -150,5 +149,12 @@ class Post
         }
       }
       return $dom;
+    }
+    
+    public function __get($attr){
+      if(empty($attr)) {
+        return false;
+      }
+      return  $this->$attr;
     }
 }
