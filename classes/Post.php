@@ -33,12 +33,14 @@ class Post {
             $this->created_at = $result['created_at'];
             $flag = false;
           }
-          $cid = $result['cid'];
-          $this->comments[$cid]['id'] = $cid;
-          $this->comments[$cid]['author'] = $result['author'];
-          $this->comments[$cid]['comment_text'] = $result['comment_text'];
-          $this->comments[$cid]['ip'] = $result['ip'];
-          $this->comments[$cid]['created_at'] = $result['c_created_at'];
+          if ($result['cid']) {
+            $cid = $result['cid'];
+            $this->comments[$cid]['id'] = $cid;
+            $this->comments[$cid]['author'] = $result['author'];
+            $this->comments[$cid]['comment_text'] = $result['comment_text'];
+            $this->comments[$cid]['ip'] = $result['ip'];
+            $this->comments[$cid]['created_at'] = $result['c_created_at'];
+          }
         }
       }
     }
