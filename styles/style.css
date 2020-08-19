@@ -71,7 +71,7 @@ img {
     padding: 1rem;
 }
 .card-image {
-    background: url('../images/default300x230.jpg');
+    background: url('/images/default300x230.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -125,8 +125,8 @@ img {
     padding: 0 15px;
 }
 
-.hidden{
-    display: none;
+.hidden {
+    display: none!important;
 }
 
 .comment-leave{
@@ -368,7 +368,42 @@ aricle h4{
 
 .btn-back {
     max-width: 135px;
-    
+}
+
+.message-box {
+    width: 100%;
+    border-radius: 6px;
+    margin: 20px auto;
+    padding: auto 0;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+ .message-text {
+    vertical-align: middle;
+    list-style: none;
+}
+
+.message-box i {
+    vertical-align: middle;
+    padding: 20px;
+}
+
+ .message-box-error {
+    background-color: #ecc8c5;
+    border: #d37f78 2px solid;
+    color: #b83c37;
+}
+
+ .message-box-success {
+    background-color: #ddf3d5;
+    border: #9ddc86 2px solid;
+    color: #597151;
 }
 
 /** =====================
