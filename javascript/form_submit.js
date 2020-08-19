@@ -20,7 +20,7 @@
                     var newComment = theLastChild.cloneNode(true);
                     if (theFirstChild){
                       parent.prepend(newComment, theFirstChild); 
-                    } else{
+                    } else {
                        parent.appendChild(newComment);
                     }
                     newComment.setAttribute('class', 'comments-container');
