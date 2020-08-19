@@ -16,7 +16,7 @@ if (isset($_POST['author']) && isset($_POST['comment']) && isset($_POST['post_id
       $comment->set('ip', $_SERVER['REMOTE_ADDR']);
       $save = $comment->save();
       $result = [
-            'author' => nl2br(htmlspecialchars($author),
+            'author' => nl2br(htmlspecialchars($author)),
             'comment' => nl2br(htmlspecialchars($comment_text)),
             'created_at' => $comment->get('created_at'),
             'ip' => $comment->get('ip'),
